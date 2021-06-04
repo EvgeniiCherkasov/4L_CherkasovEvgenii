@@ -3,7 +3,7 @@ import UIKit
 class Car {
     var mark: String
     var year: Int
-    var valumeOfTrunk: Int
+    var valumeOfTrunk: Int = 100
     var isEngineStarted: Bool = false
     var isWindowOpen: Bool = false
     var fullnesOfTrunk: Int = 0
@@ -84,6 +84,7 @@ class SportCar: Car{
         if valumeOfTrunk < 100{
                     self.valumeOfTrunk = valumeOfTrunk
         }else{
+            self.valumeOfTrunk = 100
         print("Слишком большой обьем багажника для легкового автомобиля. В созданном автомобиле объем уменьшен до 100.")
         }
     }
@@ -120,6 +121,8 @@ class SportCar: Car{
 
 var BMW = SportCar(mark: "BMW", year: 2021, valumeOfTrunk: 110)
 BMW.actionOfSportCar(action: .sportModeOn)
+BMW.basicActions(action: .startEngine)
+BMW.discription()
 
 
 class TruckCar: Car{
@@ -132,8 +135,9 @@ class TruckCar: Car{
         super.init(mark: mark, year: year, valumeOfTrunk: valumeOfTrunk)
         
         if valumeOfTrunk > 100{
-                    self.valumeOfTrunk = valumeOfTrunk
+            self.valumeOfTrunk = valumeOfTrunk
         }else{
+            self.valumeOfTrunk = 100
         print("Слишком маленький обьем багажника для грузового автомобиля. В созданном автомобиле объем увеличен до 100.")
         }
     }
@@ -161,6 +165,7 @@ class TruckCar: Car{
             }
         }
     }
+    
     override func discription() {
         print("Марка автомобиля \(mark). Год выпуска: \(year). Окно \(isWindowOpen ? "открыто" : "закрыто"). Двигатель \(isEngineStarted ? "запущен" : "заглушен"). Прицеп \(isTrailerAttached ? "присоединен": "отсоединен.") Объем багажника: \(valumeOfTrunk). Багажник заполнен на \(fullnesOfTrunk)")
     }
